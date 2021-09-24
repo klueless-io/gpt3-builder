@@ -23,8 +23,8 @@ group :green_pass_then_cop, halt_on_fail: true do
     watch(%r{^lib/gpt3/builder/commands/(.+)\.rb$}) { |m| "spec/unit/commands/#{m[1]}_spec.rb" }
   end
 
-  guard :rubocop, all_on_start: false, cli: ['--format', 'clang'] do
-    watch(/{.+\.rb$/)
-    watch(%r{(?:.+/)?\.rubocop(?:_todo)?\.yml$}) { |m| File.dirname(m[0]) }
-  end
+  # guard :rubocop, all_on_start: false, cli: ['--format', 'clang'] do
+  #   watch(/{.+\.rb$/)
+  #   watch(%r{(?:.+/)?\.rubocop(?:_todo)?\.yml$}) { |m| File.dirname(m[0]) }
+  # end
 end
