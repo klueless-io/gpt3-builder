@@ -2,11 +2,11 @@
 
 # source: https://stephenagrice.medium.com/making-a-command-line-ruby-gem-write-build-and-push-aec24c6c49eb
 
-GEM_NAME = 'gpt3_builder'
+GEM_NAME = 'gpt3-builder'
 
 require 'bundler/gem_tasks'
 require 'rspec/core/rake_task'
-require 'gpt3_builder/version'
+require 'gpt3/builder/version'
 
 RSpec::Core::RakeTask.new(:spec)
 
@@ -15,8 +15,8 @@ require 'rake/extensiontask'
 desc 'Compile all the extensions'
 task build: :compile
 
-Rake::ExtensionTask.new('gpt3_builder') do |ext|
-  ext.lib_dir = 'lib/gpt3_builder'
+Rake::ExtensionTask.new(GEM_NAME) do |ext|
+  ext.lib_dir = 'lib/gpt3/builder'
 end
 
 desc 'Publish the gem to RubyGems.org'

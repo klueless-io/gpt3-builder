@@ -19,10 +19,9 @@ module Gpt3
       attr_accessor :presence_penalty
 
       # response = client.completions(engine: engine,
-      #   parameters: { 
-      #     prompt: prompt, 
+      #   parameters: {
+      #     prompt: prompt,
       #   })
-
 
       # def self.build
       #   init.build
@@ -31,8 +30,8 @@ module Gpt3
       # Create and initialize the builder.
       #
       # @return [Builder] Returns the builder via fluent interface
-      def self.init() #configuration = nil)
-        builder = new() #configuration)
+      def self.init # configuration = nil)
+        builder = new # configuration)
 
         yield(builder) if block_given?
 
@@ -40,10 +39,10 @@ module Gpt3
       end
 
       # assigns a builder hash and defines builder methods
-      def initialize() # configuration = nil)
+      def initialize # configuration = nil)
         @access_token       = ENV['OPENAI_ACCESS_TOKEN'] # ENV['OPENAI_SECRET_KEY']
         @client             = OpenAI::Client.new(access_token: access_token)
-        
+
         @engine             = 'davinci-codex'
 
         @max_tokens         = 50
@@ -92,24 +91,24 @@ module Gpt3
       def start(message)
         @started = true
         add_block(message)
-        
+
         self
       end
 
       def human(message)
         @human_question = true
         add_block("You: #{message}")
-        
+
         self
       end
       alias dude human
 
       def example(example = nil, file: nil)
-        example = example || ''
+        example ||= ''
         example = File.read(file) if file
-        
+
         add_block(example)
-        
+
         self
       end
 
@@ -240,19 +239,19 @@ module Gpt3
       # end
 
       def debug
-        puts "----------------------------------------------------------------------"
+        puts '----------------------------------------------------------------------'
         puts prompt
-        puts "----------------------------------------------------------------------"
+        puts '----------------------------------------------------------------------'
       end
 
       private
 
       def add_line(message)
-        self.prompt = self.prompt + message + "\n"
+        self.prompt = prompt + message + "\n"
       end
 
       def add_block(message)
-        self.prompt = self.prompt + message + "\n\n"
+        self.prompt = prompt + message + "\n\n"
       end
     end
   end
