@@ -20,6 +20,6 @@ group :development, :test do
   gem 'rake-compiler', require: false
   gem 'rspec', '~> 3.0'
   gem 'rubocop'
-  gem 'rubocop-rake', require: true
-  gem 'rubocop-rspec', require: true
+  gem 'rubocop-rake', require: false
+  gem 'rubocop-rspec', require: false
 end
