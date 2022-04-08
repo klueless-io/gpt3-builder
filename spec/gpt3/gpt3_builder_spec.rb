@@ -10,7 +10,7 @@ RSpec.describe Gpt3::Builder::Gpt3Builder do
   let(:frequency_penalty) { 0 }
   let(:presence_penalty) { 0 }
 
-  let(:fluent_commands) { ->(builder) { } }
+  let(:fluent_commands) { ->(builder) {} }
 
   # let(:prompt) { question }
   # let(:path) { 'spec/samples/inputs' }
@@ -29,7 +29,6 @@ RSpec.describe Gpt3::Builder::Gpt3Builder do
     it { is_expected.to be_a(described_class) }
 
     context 'with no configuration' do
-
       it do
         is_expected.to have_attributes(
           max_tokens: 50,
@@ -38,18 +37,19 @@ RSpec.describe Gpt3::Builder::Gpt3Builder do
           frequency_penalty: 0,
           presence_penalty: 0,
           prompt: '',
-          engine: 'davinci-codex')
+          engine: 'davinci-codex'
+        )
       end
 
       context '.access_token' do
         subject { instance.access_token }
-      
+
         it { is_expected.not_to be_nil }
       end
 
       context '.client' do
         subject { instance.client }
-      
+
         it { is_expected.not_to be_nil }
       end
 
@@ -65,7 +65,7 @@ RSpec.describe Gpt3::Builder::Gpt3Builder do
 
   describe '#prompt' do
     subject { instance.prompt }
-  
+
     it { is_expected.to be_empty }
   end
 
@@ -78,21 +78,21 @@ RSpec.describe Gpt3::Builder::Gpt3Builder do
       let(:fluent_commands) do
         lambda do |builder|
           builder
-            .start("Ruby chatbot")
+            .start('Ruby chatbot')
         end
       end
 
-      it { is_expected.to include("Ruby chatbot") }
+      it { is_expected.to include('Ruby chatbot') }
 
       describe '#dude (alias of human)' do
         let(:fluent_commands) do
           lambda do |builder|
             builder
-              .start("Ruby chatbot")
+              .start('Ruby chatbot')
               .dude('Create a configuration class for the person table with the fields, First Name, Last Name and Date of Birth and three rows of sample data')
           end
         end
-  
+
         # fit { run_commands.debug }
         it { is_expected.to include('You: Create a configuration class for the person table with the fields, First Name, Last Name and Date of Birth and three rows of sample data') }
       end
@@ -101,26 +101,25 @@ RSpec.describe Gpt3::Builder::Gpt3Builder do
         let(:fluent_commands) do
           lambda do |builder|
             builder
-              .start("Ruby chatbot")
+              .start('Ruby chatbot')
               .human('Create a configuration class for the person table with the fields, First Name, Last Name and Date of Birth and three rows of sample data')
           end
         end
-  
+
         # fit { run_commands.debug }
         it { is_expected.to include('You: Create a configuration class for the person table with the fields, First Name, Last Name and Date of Birth and three rows of sample data') }
 
         describe '#example' do
-
           context 'with string based example' do
             let(:fluent_commands) do
               lambda do |builder|
                 builder
-                  .start("Ruby chatbot")
+                  .start('Ruby chatbot')
                   .human('Create a configuration class for the person table with the fields, First Name, Last Name and Date of Birth and three rows of sample data')
                   .example(file: 'spec/samples/example_class.rb')
               end
             end
-      
+
             # fit { run_commands.debug }
             # fit { run_commands.debug }
             it { is_expected.to include('row "David", "Cruwys", 07/01/1990') }
@@ -131,32 +130,30 @@ RSpec.describe Gpt3::Builder::Gpt3Builder do
   end
 
   describe '#samples' do
-    
     xit 'sample' do
       example = <<-RUBY
 
       class Configuration
 
         table :person do
-  
+
           columns [:first_name, :last_name, :date_of_birth]
-  
+
           row "David", "Cruwys", 17/01/1972
           row "Sean", "Wallace", 29/05/1967
           row "Lisa", "Cudro", 01/12/1974
-  
+
         end
       end
-  
+
       RUBY
 
       instance
-        .prompt("Ruby chatbot")
+        .prompt('Ruby chatbot')
         .command(:you, 'Create a configuration class for the person table with the fields, First Name, Last Name and Date of Birth and three rows of sample data')
         .example(example)
-        .execute()
+        .execute
         .write_to('xyz.rb')
-
     end
   end
 end

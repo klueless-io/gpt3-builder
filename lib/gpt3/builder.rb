@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'k_log'
-require "ruby/openai"
+require 'ruby/openai'
 
 require 'gpt3/builder/version'
 require 'gpt3/builder/gpt3_builder'
