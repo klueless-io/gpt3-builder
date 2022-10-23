@@ -1,0 +1,15 @@
+<!-- 
+Create a Tailwind CSS component of a pricing chart with three cards representing three plans.
+
+The first plan is a hobby plan worth $69 per month with 3 features.
+
+The 2nd plan is the small business plan worth $99 per month with 7 features.
+
+The third plan is for enterprises worth $169 per month with 12 features.
+
+The small business plan should be highlighted
+-->
+
+[insert]
+</section>
+

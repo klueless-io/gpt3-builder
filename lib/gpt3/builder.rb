@@ -15,7 +15,7 @@ module Gpt3
   end
 end
 
-if ENV['KLUE_DEBUG']&.to_s&.downcase == 'true'
+if ENV.fetch('KLUE_DEBUG', 'false').downcase == 'true'
   namespace = 'Gpt3Builder::Version'
   file_path = $LOADED_FEATURES.find { |f| f.include?('gpt3/builder/version') }
   version = Gpt3::Builder::VERSION.ljust(9)

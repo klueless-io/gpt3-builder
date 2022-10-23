@@ -1,0 +1,11 @@
+A function in ruby that deletes any text that matches a regex
+
+
+A:
+
+def delete_text(text, regex)
+  text.gsub(regex, '')
+end
+
+
+<!--((.*)|[^<]*|[^!]*|[^-]*|[^>]*)-->

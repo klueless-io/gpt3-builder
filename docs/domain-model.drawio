@@ -1,0 +1,31 @@
+<mxfile host="78x">
+  <diagram id="Jgi" name="Domain Modal">
+    <mxGraphModel dx="0" dy="0" background="#fafafa" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="page_root_Jgi" parent="Jgi"/>
+        <mxCell id="node_root_Jgi" parent="page_root_Jgi"/>
+        <mxCell id="Jgi-2" value="Gpt3Builder" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=20;verticalAlign=top" vertex="1" parent="node_root_Jgi">
+          <mxGeometry x="5" y="-15" width="210" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="Jgi-3" value="Configuration" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=20;verticalAlign=top" vertex="1" parent="node_root_Jgi">
+          <mxGeometry x="225" y="-15" width="210" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="a1" value="&lt;p style=&quot;margin:0px;margin-left:4px;margin-bottom:4px;text-align:center&quot;&gt;&lt;b&gt;Configuration&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;margin-bottom:4px&quot;&gt;collections: Collections&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;margin-bottom:4px&quot;&gt;some_attribute: String&lt;/p&gt;" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#333333;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica" vertex="1" parent="node_root_Jgi">
+          <mxGeometry x="450" y="10" width="200" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="a2" value="&lt;p style=&quot;margin:0px;margin-left:4px;margin-bottom:4px;text-align:center&quot;&gt;&lt;b&gt;Collection&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;margin-bottom:4px&quot;&gt;name: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;margin-bottom:4px&quot;&gt;description: String&lt;/p&gt;" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#333333;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica" vertex="1" parent="node_root_Jgi">
+          <mxGeometry x="670" y="10" width="200" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="Jgi-6" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=none;startFill=1;endArrow=open;endFill=1;whiteSpace=wrap;html=1;rounded=0;fillColor=#ffe6cc;strokeColor=#d79b00" parent="node_root_Jgi" source="a1" target="a2" edge="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="Jgi-7" value="Schema" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=20;verticalAlign=top" vertex="1" parent="node_root_Jgi">
+          <mxGeometry x="885" y="-15" width="210" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="Jgi-8" value="&lt;p style=&quot;margin:0px;margin-left:4px;margin-bottom:4px;text-align:center&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt; MixIn &amp;gt;&amp;gt;&lt;/i&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;margin-bottom:4px;text-align:center&quot;&gt;&lt;b&gt;Factory&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;/&gt;&lt;p style=&quot;margin:0px;margin-left:4px;margin-bottom:4px&quot;&gt;data()&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;margin-bottom:4px&quot;&gt;data_instance()&lt;/p&gt;" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#333333;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica" vertex="1" parent="node_root_Jgi">
+          <mxGeometry x="1130" y="10" width="160" height="160" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

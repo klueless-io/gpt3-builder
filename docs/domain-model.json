@@ -1,0 +1,269 @@
+{
+  "host": "78x",
+  "theme": "style_04",
+  "palette": {
+    "fill_color": "#ffe6cc",
+    "stroke_color": "#d79b00",
+    "font_color": "#333333",
+    "gradient": null
+  },
+  "style": {
+    "white_space": "wrap",
+    "html": 1,
+    "rounded": null,
+    "shadow": null,
+    "sketch": null,
+    "glass": null
+  },
+  "pages": [
+    {
+      "id": "Jgi",
+      "active": true,
+      "name": "Domain Modal",
+      "position_x": 0,
+      "position_y": 180,
+      "theme": "style_04",
+      "bg_theme": "snow",
+      "palette": {
+        "fill_color": "#ffe6cc",
+        "stroke_color": "#d79b00",
+        "font_color": "#333333",
+        "gradient": null
+      },
+      "style": {
+        "white_space": "wrap",
+        "html": 1,
+        "rounded": 0,
+        "shadow": null,
+        "sketch": null,
+        "glass": null
+      },
+      "settings": {
+        "margin_left": 0,
+        "margin_top": 0,
+        "grid": 0,
+        "grid_size": 10,
+        "guides": 1,
+        "tooltips": 1,
+        "connect": 1,
+        "arrows": 1,
+        "fold": 1,
+        "page_no": 1,
+        "page_scale": 1,
+        "page_width": 1169,
+        "page_height": 827,
+        "background": "#fafafa",
+        "page_shadow": 0,
+        "math": 0
+      },
+      "nodes": [
+        {
+          "id": "page_root_Jgi",
+          "parent_id": "Jgi",
+          "classification": "anchor",
+          "key": "page_root",
+          "nodes": [
+            {
+              "id": "node_root_Jgi",
+              "parent_id": "page_root_Jgi",
+              "classification": "anchor",
+              "key": "node_root",
+              "nodes": [
+                {
+                  "id": "rule-2",
+                  "parent_id": "node_root_Jgi",
+                  "classification": "layout_rule",
+                  "key": "grid_layout",
+                  "anchor_x": 0,
+                  "anchor_y": 0,
+                  "direction": "horizontal",
+                  "wrap_at": 6,
+                  "grid_w": 220,
+                  "grid_h": 180,
+                  "cell_no": 1
+                },
+                {
+                  "id": "Jgi-2",
+                  "parent_id": "node_root_Jgi",
+                  "classification": "shape",
+                  "key": "group",
+                  "x": 5,
+                  "y": -15,
+                  "w": 210,
+                  "h": 210,
+                  "style": "whiteSpace=wrap;html=1;rounded=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=20;verticalAlign=top",
+                  "value": "Gpt3Builder",
+                  "meta_data": {
+                    "items": [
+                      {
+                        "type": "title",
+                        "content": "Gpt3Builder"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "Jgi-3",
+                  "parent_id": "node_root_Jgi",
+                  "classification": "shape",
+                  "key": "group",
+                  "x": 225,
+                  "y": -15,
+                  "w": 210,
+                  "h": 210,
+                  "style": "whiteSpace=wrap;html=1;rounded=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=20;verticalAlign=top",
+                  "value": "Configuration",
+                  "meta_data": {
+                    "items": [
+                      {
+                        "type": "title",
+                        "content": "Configuration"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "a1",
+                  "parent_id": "node_root_Jgi",
+                  "classification": "shape",
+                  "key": "klass",
+                  "x": 450,
+                  "y": 10,
+                  "w": 200,
+                  "h": 160,
+                  "style": "whiteSpace=wrap;html=1;rounded=0;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#333333;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica",
+                  "value": "<p style=\"margin:0px;margin-left:4px;margin-bottom:4px;text-align:center\"><b>Configuration</b></p><hr size=\"1\"/><p style=\"margin:0px;margin-left:4px;margin-bottom:4px\">collections: Collections</p><p style=\"margin:0px;margin-left:4px;margin-bottom:4px\">some_attribute: String</p>",
+                  "meta_data": {
+                    "items": [
+                      {
+                        "type": "class",
+                        "name": "Configuration",
+                        "description": "Configuration container for Gpt3Builder",
+                        "namespace": "config"
+                      },
+                      {
+                        "type": "field",
+                        "name": "collections",
+                        "return_type": "Collections"
+                      },
+                      {
+                        "type": "field",
+                        "name": "some_attribute",
+                        "return_type": "String"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "a2",
+                  "parent_id": "node_root_Jgi",
+                  "classification": "shape",
+                  "key": "klass",
+                  "x": 670,
+                  "y": 10,
+                  "w": 200,
+                  "h": 160,
+                  "style": "whiteSpace=wrap;html=1;rounded=0;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#333333;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica",
+                  "value": "<p style=\"margin:0px;margin-left:4px;margin-bottom:4px;text-align:center\"><b>Collection</b></p><hr size=\"1\"/><p style=\"margin:0px;margin-left:4px;margin-bottom:4px\">name: String</p><p style=\"margin:0px;margin-left:4px;margin-bottom:4px\">description: String</p>",
+                  "meta_data": {
+                    "items": [
+                      {
+                        "type": "class",
+                        "name": "Collection",
+                        "description": "Configuration for ...",
+                        "namespace": "config"
+                      },
+                      {
+                        "type": "field",
+                        "name": "name",
+                        "return_type": "String"
+                      },
+                      {
+                        "type": "field",
+                        "name": "description",
+                        "return_type": "String"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "Jgi-6",
+                  "parent_id": "node_root_Jgi",
+                  "classification": "shape",
+                  "key": "solid",
+                  "x": 0,
+                  "y": 0,
+                  "w": 0,
+                  "h": 0,
+                  "style": "edgeStyle=orthogonalEdgeStyle;curved=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=none;startFill=1;endArrow=open;endFill=1;whiteSpace=wrap;html=1;rounded=0;fillColor=#ffe6cc;strokeColor=#d79b00",
+                  "value": "",
+                  "meta_data": {
+                    "items": [
+                      {
+                        "type": "title",
+                        "content": ""
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "Jgi-7",
+                  "parent_id": "node_root_Jgi",
+                  "classification": "shape",
+                  "key": "group",
+                  "x": 885,
+                  "y": -15,
+                  "w": 210,
+                  "h": 210,
+                  "style": "whiteSpace=wrap;html=1;rounded=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=20;verticalAlign=top",
+                  "value": "Schema",
+                  "meta_data": {
+                    "items": [
+                      {
+                        "type": "title",
+                        "content": "Schema"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "Jgi-8",
+                  "parent_id": "node_root_Jgi",
+                  "classification": "shape",
+                  "key": "interface",
+                  "x": 1130,
+                  "y": 10,
+                  "w": 160,
+                  "h": 160,
+                  "style": "whiteSpace=wrap;html=1;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#333333;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica",
+                  "value": "<p style=\"margin:0px;margin-left:4px;margin-bottom:4px;text-align:center\"><i>&lt;&lt; MixIn &gt;&gt;</i></p><p style=\"margin:0px;margin-left:4px;margin-bottom:4px;text-align:center\"><b>Factory</b></p><hr size=\"1\"/><p style=\"margin:0px;margin-left:4px;margin-bottom:4px\">data()</p><p style=\"margin:0px;margin-left:4px;margin-bottom:4px\">data_instance()</p>",
+                  "meta_data": {
+                    "items": [
+                      {
+                        "type": "interface",
+                        "name": "Factory",
+                        "description": null,
+                        "namespace": null,
+                        "interface_type": "MixIn"
+                      },
+                      {
+                        "type": "method",
+                        "name": "data",
+                        "return_type": null
+                      },
+                      {
+                        "type": "method",
+                        "name": "data_instance",
+                        "return_type": null
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

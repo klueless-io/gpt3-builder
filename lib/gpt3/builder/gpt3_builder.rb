@@ -5,23 +5,27 @@ module Gpt3
     class Gpt3Builder
       include KLog::Logging
 
+      # Re-write
+
+      # Prompt builder
+      # Pre-prompt sanitization (before applying to prompt, you want to remove useless stuff)
+      #   - This is essentially a pre-processor or it might be a filter within prompts
+      # Executor (run the prompt and store the results)
+
       attr_reader :client
+      attr_reader :response
+      attr_reader :response_body
 
       attr_accessor :prompt
 
       attr_accessor :access_token
-      attr_accessor :engine
-
-      attr_accessor :max_tokens
-      attr_accessor :temperature
-      attr_accessor :top_p
-      attr_accessor :frequency_penalty
-      attr_accessor :presence_penalty
-
-      # response = client.completions(engine: engine,
-      #   parameters: {
-      #     prompt: prompt,
-      #   })
+      
+      attr_accessor :default_engine
+      attr_accessor :default_max_tokens
+      attr_accessor :default_temperature
+      attr_accessor :default_top_p
+      attr_accessor :default_frequency_penalty
+      attr_accessor :default_presence_penalty
 
       # def self.build
       #   init.build
@@ -40,18 +44,17 @@ module Gpt3
 
       # assigns a builder hash and defines builder methods
       def initialize # configuration = nil)
-        @access_token       = ENV['OPENAI_ACCESS_TOKEN'] # ENV['OPENAI_SECRET_KEY']
-        @client             = OpenAI::Client.new(access_token: access_token)
+        @access_token               = ENV['OPENAI_ACCESS_TOKEN'] # ENV['OPENAI_SECRET_KEY']
+        @client                     = OpenAI::Client.new(access_token: access_token)
 
-        @engine             = 'davinci-codex'
+        @default_default_engine     = 'code-davinci-001'
+        @default_max_tokens         = 100
+        @default_temperature        = 0
+        @default_top_p              = 1
+        @default_frequency_penalty  = 0
+        @default_presence_penalty   = 0
 
-        @max_tokens         = 50
-        @temperature        = 0
-        @top_p              = 1
-        @frequency_penalty  = 0
-        @presence_penalty   = 0
-
-        @prompt             = ''
+        @prompt                     = ''
 
         # @target_folders = configuration.target_folders.clone
         # @template_folders = configuration.template_folders.clone
@@ -103,6 +106,18 @@ module Gpt3
       end
       alias dude human
 
+      def message(message)
+        add_block(message)
+
+        self
+      end
+
+      def line(message)
+        add_line(message)
+
+        self
+      end
+
       def example(example = nil, file: nil)
         example ||= ''
         example = File.read(file) if file
@@ -112,24 +127,66 @@ module Gpt3
         self
       end
 
-      def add_file(file, **opts)
-        # move to command
-        full_file = opts.key?(:folder_key) ? target_file(file, folder: opts[:folder_key]) : target_file(file)
+      def complete(
+        engine: default_engine,
+        max_tokens: default_max_tokens,
+        temperature: default_temperature,
+        top_p: default_top_p,
+        frequency_penalty: default_frequency_penalty,
+        presence_penalty: default_presence_penalty,
+        suffix: nil
+      )
+        parameters = {
+          prompt: prompt,
+          max_tokens: max_tokens,
+          temperature: temperature,
+          top_p: top_p,
+          frequency_penalty: frequency_penalty,
+          presence_penalty: presence_penalty
+        }
 
-        # Need logging options that can log these internal details
-        FileUtils.mkdir_p(File.dirname(full_file))
+        parameters[:suffix] = suffix if suffix
 
-        content = process_any_content(**opts)
+        @response = client.completions(engine: engine, parameters: parameters)
 
-        file_write(full_file, content, on_exist: opts[:on_exist])
-
-        # Prettier needs to work with the original file name
-        run_prettier file if opts.key?(:pretty)
-        # Need support for rubocop -a
+        @response_body = JSON.parse(response.body)
 
         self
       end
-      alias touch add_file # it is expected that you would not supply any options, just a file name
+
+      def file_list
+        @response = client.files.list
+
+        @response_body = JSON.parse(response.body)
+
+        self
+      end
+
+
+      def write_result(file)
+        File.write(file, response_text)
+
+        self
+      end
+
+      # def add_file(file, **opts)
+      #   # move to command
+      #   full_file = opts.key?(:folder_key) ? target_file(file, folder: opts[:folder_key]) : target_file(file)
+
+      #   # Need logging options that can log these internal details
+      #   FileUtils.mkdir_p(File.dirname(full_file))
+
+      #   content = process_any_content(**opts)
+
+      #   file_write(full_file, content, on_exist: opts[:on_exist])
+
+      #   # Prettier needs to work with the original file name
+      #   run_prettier file if opts.key?(:pretty)
+      #   # Need support for rubocop -a
+
+      #   self
+      # end
+      # alias touch add_file # it is expected that you would not supply any options, just a file name
 
       # def make_folder(folder_key = nil, sub_path: nil)
       #   folder_key  = current_folder_key if folder_key.nil?
@@ -242,9 +299,22 @@ module Gpt3
         puts '----------------------------------------------------------------------'
         puts prompt
         puts '----------------------------------------------------------------------'
+
+        # puts '- Pretty JSON-----------------------------------------------------------'
+        # puts JSON.pretty_generate(run_commands.response_body)
+        if response_body
+          puts '- JSON--------------------------------------------------------------------'
+          puts response_body['choices'].first['text']
+        end
       end
 
       private
+
+      def response_text
+        return '' if response_body.nil?
+
+        response_body['choices'].first['text']
+      end
 
       def add_line(message)
         self.prompt = prompt + message + "\n"
