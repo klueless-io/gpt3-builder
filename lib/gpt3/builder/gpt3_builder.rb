@@ -2,6 +2,7 @@
 
 module Gpt3
   module Builder
+    # GPT3 Builder
     class Gpt3Builder
       include KLog::Logging
 
@@ -129,6 +130,7 @@ module Gpt3
         self
       end
 
+      # rubocop:disable Metrics/ParameterLists
       def complete(
         engine: default_engine,
         max_tokens: default_max_tokens,
@@ -155,6 +157,7 @@ module Gpt3
 
         self
       end
+      # rubocop:enable Metrics/ParameterLists
 
       def file_list
         @response = client.files.list
@@ -303,10 +306,10 @@ module Gpt3
 
         # puts '- Pretty JSON-----------------------------------------------------------'
         # puts JSON.pretty_generate(run_commands.response_body)
-        if response_body
-          puts '- JSON--------------------------------------------------------------------'
-          puts response_body['choices'].first['text']
-        end
+        return unless response_body
+
+        puts '- JSON--------------------------------------------------------------------'
+        puts response_body['choices'].first['text']
       end
 
       private

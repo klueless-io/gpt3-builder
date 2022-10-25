@@ -14,7 +14,9 @@ RSpec.describe Gpt3::Builder::Gpt3Builder do
   # Here is a good example: https://beta.openai.com/docs/quickstart/adjust-your-settings
   # Higher values means the model will take more risks. Try 0.9 for more creative applications, and 0 for well-defined answer.
   let(:temperature) { 0 }
-  # An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.
+  # An alternative to sampling with temperature, called nucleus sampling,
+  # where the model considers the results of the tokens with top_p probability mass.
+  # So 0.1 means only the tokens comprising the top 10% probability mass are considered.
   # It is generally recommended alter top_p or temperature but not both.
   let(:top_p) { 1 }
 
@@ -272,6 +274,7 @@ RSpec.describe Gpt3::Builder::Gpt3Builder do
     clean_content(raw_content, remove_class: remove_class, remove_newline: remove_newline, squish: squish, remove_html_comments: remove_html_comments)
   end
 
+  # rubocop:disable  Layout/LineLength
   def clean_content(content, remove_class: true, remove_newline: false, squish: false, remove_html_comments: false)
     # remove classes, then remove newlines, then remove extra spaces
     content = content.gsub(/ class=\s*"([^"]*?)"/, '') if remove_class
@@ -285,6 +288,7 @@ RSpec.describe Gpt3::Builder::Gpt3Builder do
     # .gsub(/\n/, ' ')
     # .gsub(/\s+/, ' ')
   end
+  # rubocop:enable  Layout/LineLength
 
   describe '#samples' do
     xit 'sample' do
