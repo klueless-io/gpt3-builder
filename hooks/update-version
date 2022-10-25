@@ -19,7 +19,7 @@ namespaces.each do |namespace|
   indent += 1
 end
 
-output.push "#{'  ' * indent}VERSION = \'#{version}'"
+output.push "#{'  ' * indent}VERSION = '#{version}'"
 indent -= 1
 
 namespaces.each do
