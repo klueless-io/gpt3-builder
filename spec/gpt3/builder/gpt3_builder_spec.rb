@@ -66,7 +66,6 @@ RSpec.describe Gpt3::Builder::Gpt3Builder do
         subject { instance.access_token }
 
         it { is_expected.not_to be_nil }
-        
       end
 
       context '.client' do
@@ -154,7 +153,7 @@ RSpec.describe Gpt3::Builder::Gpt3Builder do
       describe '#message' do
         let(:component_type) { 'Call to Action' }
         let(:test_sect) { 'cta-sections' }
-        let(:test_name) { '08'}
+        let(:test_name) { '08' }
 
         let(:fluent_commands) do
           lambda do |builder|
@@ -180,15 +179,14 @@ RSpec.describe Gpt3::Builder::Gpt3Builder do
         end
 
         # fit { run_commands.debug }
-        fit {
+        fit do
           run_commands.debug
-        }
+        end
         # it { is_expected.to include('You: Create a configuration class for the person table with the fields, First Name, Last Name and Date of Birth and three rows of sample data') }
       end
 
       describe '#build upload file for fine tuning' do
-
-        xit {
+        xit do
           training = [
             {
               prompt: read_content(test_path, 'cta-sections', '02.html', remove_class: false, remove_newline: true, squish: true),
@@ -200,7 +198,7 @@ RSpec.describe Gpt3::Builder::Gpt3Builder do
             }
           ]
 
-          jsonl = training.map { |item| item.to_json }.join("\n")
+          jsonl = training.map(&:to_json).join("\n")
 
           path = 'spec/samples/uploads'
           file = 'tailwind-component-to-json-data.jsonl'
@@ -208,19 +206,18 @@ RSpec.describe Gpt3::Builder::Gpt3Builder do
           File.write(full_file, jsonl)
 
           response = instance.client.files.upload(parameters: { file: full_file, purpose: 'fine-tune' })
-          puts  response
+          puts response
 
           puts JSON.pretty_generate(response)
           puts "ID: #{response['id']}"
 
           # "id"=>"file-N4tcxA1fJmbKnpH8ofnv2cdG"
-        }
+        end
         # it { is_expected.to include('You: Create a configuration class for the person table with the fields, First Name, Last Name and Date of Birth and three rows of sample data') }
       end
-
     end
   end
-  
+
   describe '#file_list' do
     subject { instance.client.files.list }
 
@@ -240,13 +237,12 @@ RSpec.describe Gpt3::Builder::Gpt3Builder do
   end
 
   describe '#fine_tune_create' do
-    subject { 
-      # 
+    subject do
       instance.client.finetunes.create(parameters: {
-        model: 'davinci',
-        training_file: "file-N4tcxA1fJmbKnpH8ofnv2cdG" 
-      })
-    }
+                                         model: 'davinci',
+                                         training_file: 'file-N4tcxA1fJmbKnpH8ofnv2cdG'
+                                       })
+    end
 
     it {
       puts subject
@@ -255,10 +251,9 @@ RSpec.describe Gpt3::Builder::Gpt3Builder do
   end
 
   describe '#fine_tune_cancel' do
-    subject { 
-      # 
+    subject do
       instance.client.finetunes.cancel(id: '')
-    }
+    end
 
     it {
       puts subject
@@ -287,8 +282,8 @@ RSpec.describe Gpt3::Builder::Gpt3Builder do
     content
       .gsub('Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla nec.', 'Ac euismod vel sit maecenas id pellentesque eu sed consectetur.')
       .gsub('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et, egestas tempus tellus etiam sed. Quam a scelerisque amet ullamcorper eu enim et fermentum, augue. Aliquet amet volutpat quisque ut interdum tincidunt duis.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.')
-      # .gsub(/\n/, ' ')
-      # .gsub(/\s+/, ' ')
+    # .gsub(/\n/, ' ')
+    # .gsub(/\s+/, ' ')
   end
 
   describe '#samples' do

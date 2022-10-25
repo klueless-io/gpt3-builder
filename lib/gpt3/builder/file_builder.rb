@@ -72,7 +72,6 @@ module Gpt3
       #   "object": "file",
       #   "deleted": true
       # }
-
     end
   end
 end

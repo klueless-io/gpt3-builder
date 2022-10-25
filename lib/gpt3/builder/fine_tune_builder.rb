@@ -31,7 +31,7 @@ module Gpt3
       #     { ... }
       #   ]
       # }
-      
+
       # Retrieve fine-tune
       # Gets info about the fine-tune job.
       # https://api.openai.com/v1/fine-tunes/{fine_tune_id}
@@ -104,8 +104,6 @@ module Gpt3
       #   ],
       #   "updated_at": 1614807865,
       # }
-      
-      
     end
   end
 end

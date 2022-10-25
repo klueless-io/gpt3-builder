@@ -19,7 +19,7 @@ module Gpt3
       attr_accessor :prompt
 
       attr_accessor :access_token
-      
+
       attr_accessor :default_engine
       attr_accessor :default_max_tokens
       attr_accessor :default_temperature
@@ -34,7 +34,8 @@ module Gpt3
       # Create and initialize the builder.
       #
       # @return [Builder] Returns the builder via fluent interface
-      def self.init # configuration = nil)
+      # configuration = nil)
+      def self.init
         builder = new # configuration)
 
         yield(builder) if block_given?
@@ -43,8 +44,9 @@ module Gpt3
       end
 
       # assigns a builder hash and defines builder methods
-      def initialize # configuration = nil)
-        @access_token               = ENV['OPENAI_ACCESS_TOKEN'] # ENV['OPENAI_SECRET_KEY']
+      # configuration = nil)
+      def initialize
+        @access_token               = ENV.fetch('OPENAI_ACCESS_TOKEN', nil) # ENV['OPENAI_SECRET_KEY']
         @client                     = OpenAI::Client.new(access_token: access_token)
 
         @default_default_engine     = 'code-davinci-001'
@@ -161,7 +163,6 @@ module Gpt3
 
         self
       end
-
 
       def write_result(file)
         File.write(file, response_text)
@@ -317,11 +318,11 @@ module Gpt3
       end
 
       def add_line(message)
-        self.prompt = prompt + message + "\n"
+        self.prompt = "#{prompt}#{message}\n"
       end
 
       def add_block(message)
-        self.prompt = prompt + message + "\n\n"
+        self.prompt = "#{prompt}#{message}\n\n"
       end
     end
   end
