@@ -308,7 +308,7 @@ module Gpt3
         # puts JSON.pretty_generate(run_commands.response_body)
         return unless response_body
 
-        puts '- JSON--------------------------------------------------------------------'
+        puts '- JSON----------------------------------------------------------------'
         puts response_body['choices'].first['text']
       end
 
